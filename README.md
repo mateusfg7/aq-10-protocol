@@ -36,3 +36,7 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+# referencies
+
+- Quociente de Espectro do Autismo – Versão Criança (AQ) (https://docs.autismresearchcentre.com/tests/AQ_Child_Scoring_Key_Portuguese.pdf)
