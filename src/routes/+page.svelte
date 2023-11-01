@@ -2,7 +2,7 @@
 	let choice: string;
 </script>
 
-<div>
+<div class="border border-red-600">
 	<div>C acha q é doido?</div>
 	<div>
 		<div>
