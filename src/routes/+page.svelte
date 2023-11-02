@@ -80,7 +80,10 @@
 	<div class="space-y-10">
 		<div class="flex justify-between text-4xl">
 			<span>Pontos</span>
-			<span class="font-bold">
+			<span
+				data-use-gradient={total && total > 5}
+				class="text-6xl font-bold gradient bg-clip-text data-[use-gradient='true']:text-transparent"
+			>
 				{#if total}
 					{total}
 				{:else}
@@ -90,8 +93,24 @@
 		</div>
 		<button
 			on:click={getTotal}
-			class="w-full p-4 text-3xl text-white transition-colors bg-blue-500 rounded-lg active:bg-blue-800 hover:bg-blue-600"
+			class="w-full p-4 text-3xl font-bold text-white transition-colors bg-blue-500 rounded-lg hover:bg-blue-600 active:bg-blue-800"
 			>Calcular</button
 		>
 	</div>
 </div>
+
+<style>
+	.gradient {
+		background-image: linear-gradient(
+			to right,
+			#ff1c18,
+			#ff6e04,
+			#ffde0e,
+			#1ae489,
+			#08cef7,
+			#4953fe,
+			#9633e1,
+			#ea1b5f
+		);
+	}
+</style>
