@@ -1,62 +1,97 @@
 <script lang="ts">
 	import ChoiceSelector from '$lib/components/choice-selector.svelte';
 
-	let questions = [
+	let total: number | undefined;
+
+	let questions: { question: string; reverseWeight: boolean; points: number | undefined }[] = [
 		{
 			question: 'Costumo notar pequenos sons quando outros não percebem',
 			reverseWeight: false,
-			points: 0
+			points: undefined
 		},
 		{
 			question:
 				'Eu geralmente me concentro mais no todo de uma imagem, ao invés de pequenos detalhes',
 			reverseWeight: true,
-			points: 0
+			points: undefined
 		},
 		{
 			question: 'Acho fácil fazer mais de uma coisa de uma só vez',
 			reverseWeight: true,
-			points: 0
+			points: undefined
 		},
 		{
 			question: 'Se houver uma interrupção, posso voltar para o que eu estava fazendo muito rápido',
 			reverseWeight: true,
-			points: 0
+			points: undefined
 		},
 		{
 			question: 'Acho fácil “ler nas entrelinhas” quando alguém esta falando comigo',
 			reverseWeight: true,
-			points: 0
+			points: undefined
 		},
 		{
 			question: 'Eu sei dizer se alguém que está me ouvindo está ficando entediado',
 			reverseWeight: true,
-			points: 0
+			points: undefined
 		},
 		{
 			question:
 				'Quando estou lendo uma história, acho difícil descobrir as intenções dos personagens',
 			reverseWeight: false,
-			points: 0
+			points: undefined
 		},
 		{
 			question:
 				'Gosto de coletar informações sobre categorias de coisas (por exemplo, tipos de carro, tipos de pássaros, tipos de trem, tipos de planta, etc.)',
 			reverseWeight: false,
-			points: 0
+			points: undefined
 		},
 		{
 			question:
 				'Acho que é fácil descobrir o que alguém está pensando ou sentindo apenas olhando para o rosto da pessoa',
 			reverseWeight: true,
-			points: 0
+			points: undefined
 		},
-		{ question: 'Acho difícil entender as intenções das pessoas', reverseWeight: false, points: 0 }
+		{
+			question: 'Acho difícil entender as intenções das pessoas',
+			reverseWeight: false,
+			points: undefined
+		}
 	];
+
+	function getTotal() {
+		const undefinedQuestions = questions.filter((question) => question.points === undefined);
+
+		if (undefinedQuestions.length > 0) return;
+
+		total = questions
+			.map((question) => question.points)
+			.reduce((accumulator, currentValue) => (accumulator as number) + (currentValue as number));
+	}
 </script>
 
-<div class="flex flex-col max-w-[40rem] gap-16 pb-52">
-	{#each questions as { points, question, reverseWeight }, index (question)}
-		<ChoiceSelector index={index + 1} {reverseWeight} title={question} bind:points />
-	{/each}
+<div class="flex flex-col max-w-[40rem] gap-32 pb-52">
+	<div class="flex flex-col gap-16">
+		{#each questions as { points, question, reverseWeight }, index (question)}
+			<ChoiceSelector index={index + 1} {reverseWeight} title={question} bind:points />
+		{/each}
+	</div>
+	<div class="space-y-10">
+		<div class="flex justify-between text-4xl">
+			<span>Pontos</span>
+			<span class="font-bold">
+				{#if total}
+					{total}
+				{:else}
+					?
+				{/if}
+			</span>
+		</div>
+		<button
+			on:click={getTotal}
+			class="w-full p-4 text-3xl text-white transition-colors bg-blue-500 rounded-lg active:bg-blue-800 hover:bg-blue-600"
+			>Calcular</button
+		>
+	</div>
 </div>

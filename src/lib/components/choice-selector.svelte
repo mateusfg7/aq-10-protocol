@@ -3,7 +3,7 @@
 
 	export let reverseWeight: boolean;
 	export let title: string;
-	export let points: number;
+	export let points: number | undefined;
 	export let index: number;
 
 	let choice: string;

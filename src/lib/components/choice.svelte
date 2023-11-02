@@ -17,7 +17,7 @@
 	class:bad_0={option === 'bad_0'}
 	class:good_0={option === 'good_0'}
 	class:good_1={option === 'good_1'}
-	class="flex items-center justify-center flex-1 p-2 text-center border-r cursor-pointer select-none border-neutral-200"
+	class="flex items-center justify-center flex-1 p-2 text-center transition-colors border-r cursor-pointer select-none border-neutral-200 data-[selected='true']:font-bold"
 >
 	{optionTitles[option]}
 </button>
