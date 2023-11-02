@@ -78,11 +78,11 @@
 		{/each}
 	</div>
 	<div class="space-y-10">
-		<div class="flex justify-between text-4xl">
+		<div class="flex justify-between text-2xl md:text-4xl">
 			<span>Pontos</span>
 			<span
 				data-use-gradient={total && total > 5}
-				class="text-6xl font-bold gradient bg-clip-text data-[use-gradient='true']:text-transparent"
+				class="text-4xl md:text-6xl font-bold gradient bg-clip-text data-[use-gradient='true']:text-transparent"
 			>
 				{#if total}
 					{total}
@@ -93,7 +93,7 @@
 		</div>
 		<button
 			on:click={getTotal}
-			class="w-full p-4 text-3xl font-bold text-white transition-colors bg-blue-500 rounded-lg hover:bg-blue-600 active:bg-blue-800"
+			class="w-full p-4 text-xl font-bold text-white transition-colors bg-blue-500 rounded-lg md:text-3xl hover:bg-blue-600 active:bg-blue-800"
 			>Calcular</button
 		>
 	</div>

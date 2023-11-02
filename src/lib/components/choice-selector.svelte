@@ -19,7 +19,7 @@
 </script>
 
 <div class="flex flex-col gap-8">
-	<span class="text-2xl">
+	<span class="text-lg md:text-2xl">
 		<span class="font-bold">{index}.</span>
 		<span>{title}</span>
 	</span>
