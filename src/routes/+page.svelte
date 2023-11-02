@@ -1,29 +1,62 @@
 <script lang="ts">
-	let choice: string;
+	import ChoiceSelector from '$lib/components/choice-selector.svelte';
+
+	let questions = [
+		{
+			question: 'Costumo notar pequenos sons quando outros não percebem',
+			reverseWeight: false,
+			points: 0
+		},
+		{
+			question:
+				'Eu geralmente me concentro mais no todo de uma imagem, ao invés de pequenos detalhes',
+			reverseWeight: true,
+			points: 0
+		},
+		{
+			question: 'Acho fácil fazer mais de uma coisa de uma só vez',
+			reverseWeight: true,
+			points: 0
+		},
+		{
+			question: 'Se houver uma interrupção, posso voltar para o que eu estava fazendo muito rápido',
+			reverseWeight: true,
+			points: 0
+		},
+		{
+			question: 'Acho fácil “ler nas entrelinhas” quando alguém esta falando comigo',
+			reverseWeight: true,
+			points: 0
+		},
+		{
+			question: 'Eu sei dizer se alguém que está me ouvindo está ficando entediado',
+			reverseWeight: true,
+			points: 0
+		},
+		{
+			question:
+				'Quando estou lendo uma história, acho difícil descobrir as intenções dos personagens',
+			reverseWeight: false,
+			points: 0
+		},
+		{
+			question:
+				'Gosto de coletar informações sobre categorias de coisas (por exemplo, tipos de carro, tipos de pássaros, tipos de trem, tipos de planta, etc.)',
+			reverseWeight: false,
+			points: 0
+		},
+		{
+			question:
+				'Acho que é fácil descobrir o que alguém está pensando ou sentindo apenas olhando para o rosto da pessoa',
+			reverseWeight: true,
+			points: 0
+		},
+		{ question: 'Acho difícil entender as intenções das pessoas', reverseWeight: false, points: 0 }
+	];
 </script>
 
-<div class="border border-red-600">
-	<div>C acha q é doido?</div>
-	<div>
-		<div>
-			<label for="q1">Absolutamente não</label>
-			<input type="radio" name="q1" id="q1" value="q1" bind:group={choice} />
-		</div>
-		<div>
-			<label for="q1">Acho q não</label>
-			<input type="radio" name="q2" id="q2" value="q2" bind:group={choice} />
-		</div>
-		<div>
-			<label for="q1">Sei la</label>
-			<input type="radio" name="q3" id="q3" value="q3" bind:group={choice} />
-		</div>
-		<div>
-			<label for="q1">Acho q sim</label>
-			<input type="radio" name="q4" id="q4" value="q4" bind:group={choice} />
-		</div>
-		<div>
-			<label for="q1">Com certesa</label>
-			<input type="radio" name="q5" id="q5" value="q5" bind:group={choice} />
-		</div>
-	</div>
+<div class="flex flex-col max-w-[40rem] gap-16 pb-52">
+	{#each questions as { points, question, reverseWeight }, index (question)}
+		<ChoiceSelector index={index + 1} {reverseWeight} title={question} bind:points />
+	{/each}
 </div>
